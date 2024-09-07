@@ -1,5 +1,5 @@
 # 1. Domača naloga - SOR iteracija za razpršene matrike
-Elian Mugerli 7.9.2024
+Elian Mugerli, 7.9.2024
 
 Naloga zahteva implementacijo `sor` metode. Ta izvaja iteracijo za reševanje sistema linearnih enačb 
 $Ax = b$,
