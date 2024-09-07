@@ -1,49 +1,25 @@
-# Vzorec vaje
+# 1. Domača naloga - SOR iteracija za razpršene matrike
+Elian Mugerli 7.9.2024
 
-V tem direktoriju je vzorec kode, kot jo bomo pisali na vajah. V julia REPL aktiviramo
-projekt v tem direktoriju. To omogoča, da v julia REPL kličemo funkcije, ki so definirane
-v direktoriju `src`. 
+Naloga zahteva implementacijo `sor` metode. Ta izvaja iteracijo za reševanje sistema linearnih enačb 
+$Ax = b$,
+kjer je A razpršena matrika.
 
-```
-julia> # z vnosom znaka ] pridemo v "pkg" način
-(@v1.10) pkg> activate VzorecVaje
-```
+Razpršena matrika je matrika, ki je ločena na dve matriki:
+#' - matrika indeksov `I`, ki vsebuje indekse vrednosti v matriki `V`
+#' Vsaka vrstica matrike `V` vsebuje ničelne elemente iz vrstice v prvotni matriki.
+#' V matriki `I` so indeksi stolpcev teh neničelnih elementov.
+
+Metoda `sor` je iteraticna, ki uporablja relaksacijski parameter omega za hitrejšo konvergenco k rešitvi. Ustavi se, ko je dosežena določena toleranca napake.
+
+V tem direktoriju se nahajajo datoteke potrebne za delovanje 1. domače naloge. Nalogo poženemo, tako da pokličemo `include("docs/demo.jl")`. V njem se nahaja rešitev za podani problem. Še pred tem je potrebno poklicati `activate Domaca01`. 
 
 ## Testi
 
 Teste poženemo, tako da pokličemo tako, da v `pkg` načinu poženemo ukaz `test`
 
-```shell
-(VzorecVaje) pkg> test
-
-    Testing VzorecVaje
-    ...
-         Testing Running tests...
-Test Summary:          | Pass  Total  Time
-Linearna interpolacija |    1      1  0.0s
-     Testing VzorecVaje tests passed 
-```
-
-oziroma v terminalu poženemo
-
-```shell
-julia --project="VzorecVaje" -e "import Pkg; Pkg.test()"
-```
-
 ## Dokumentacija
 
 Poročilo generiramo s paketom [Weave.jl](https://github.com/JunoLab/Weave.jl). Podrobnosti so v datoteki `makedocs.jl`.
 
-V terminalu lahko z ukazom generiramo PDF datoteko
-
-```shell
-$ julia --project="VzorecVaje" VzorecVaje/docs/makedocks.jl
-```
-
-Podobno lahko storimo v julia REPL-u
-
-```jl
-julia> include("VzorecVaje/docs/makedocs.jl")
-```
-
-Zgornja ukaza iz komentarjev in kode v `demo.jl` generirata PDF datoteko.
+Zgornja ukaza iz komentarjev in kode v `demo.jl` generirata PDF datoteko, ki se ob generiranju nahaja znotraj direktorija `build` v datoteki `demo.pdf`.
